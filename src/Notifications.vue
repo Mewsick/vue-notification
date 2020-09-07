@@ -164,8 +164,8 @@ const Component = {
     }
   },
   mounted () {
-    events.$on('add', this.addItem);
-    events.$on('close', this.closeItem);
+    events.on('add', this.addItem);
+    events.on('close', this.closeItem);
   },
   computed: {
     actualWidth () {
