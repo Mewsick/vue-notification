@@ -164,8 +164,8 @@ const Component = {
     }
   },
   mounted () {
-    events.$on('add', this.addItem);
-    events.$on('close', this.closeItem);
+    events.on('add', this.addItem);
+    events.on('close', this.closeItem);
   },
   computed: {
     actualWidth () {
@@ -325,7 +325,7 @@ const Component = {
       item.state = STATE.DESTROYED
 
       if (!this.isVA) {
-        this.clean()
+        this.clean({})
       }
 
       this.$emit('destroy', item)
@@ -351,7 +351,9 @@ const Component = {
         : animation
     },
 
-    enter ({ el, complete }) {
+    enter (el, complete) {
+      if(!this.isVA) return;
+
       const animation = this.getAnimation('enter', el)
 
       this.velocity(el, animation, {
@@ -360,7 +362,9 @@ const Component = {
       })
     },
 
-    leave ({ el, complete }) {
+    leave (el, complete) {
+      if(!this.isVA) return;
+
       let animation = this.getAnimation('leave', el)
 
       this.velocity(el, animation, {
@@ -369,7 +373,9 @@ const Component = {
       })
     },
 
-    clean () {
+    clean (el) {
+      if(!el) return;
+
       this.list = this.list.filter(v => v.state !== STATE.DESTROYED)
     }
   }
