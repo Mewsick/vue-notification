@@ -19,7 +19,7 @@
         this.$emit('leave', { el, complete })
       },
       afterLeave () {
-        this.$emit('afterLeave')
+        this.$emit('afterLeave', {})
       }
     }
   }

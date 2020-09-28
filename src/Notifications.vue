@@ -325,7 +325,7 @@ const Component = {
       item.state = STATE.DESTROYED
 
       if (!this.isVA) {
-        this.clean()
+        this.clean({})
       }
 
       this.$emit('destroy', item)
@@ -373,8 +373,8 @@ const Component = {
       })
     },
 
-    clean () {
-      if(!this.isVA) return;
+    clean (args) {
+      if(!args) return;
 
       this.list = this.list.filter(v => v.state !== STATE.DESTROYED)
     }
