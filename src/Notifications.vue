@@ -352,6 +352,8 @@ const Component = {
     },
 
     enter ({ el, complete }) {
+      if(!this.isVA) return;
+
       const animation = this.getAnimation('enter', el)
 
       this.velocity(el, animation, {
@@ -361,6 +363,8 @@ const Component = {
     },
 
     leave ({ el, complete }) {
+      if(!this.isVA) return;
+
       let animation = this.getAnimation('leave', el)
 
       this.velocity(el, animation, {
@@ -370,6 +374,8 @@ const Component = {
     },
 
     clean () {
+      if(!this.isVA) return;
+
       this.list = this.list.filter(v => v.state !== STATE.DESTROYED)
     }
   }
