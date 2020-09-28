@@ -28,7 +28,7 @@ const Notify = {
 
     const name = args.name || 'notify'
 
-    Vue.prototype['$' + name] = notify
+    Vue.config.globalProperties['$' + name] = notify
     Vue[name] = notify
   }
 }
