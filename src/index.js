@@ -18,12 +18,12 @@ const Notify = {
       }
 
       if (typeof params === 'object') {
-        events.$emit('add', params)
+        events.emit('add', params)
       }
     }
 
     notify.close = function (id) {
-      events.$emit('close', id)
+      events.emit('close', id)
     }
 
     const name = args.name || 'notify'
